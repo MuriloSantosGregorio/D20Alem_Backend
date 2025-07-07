@@ -2,8 +2,7 @@ import "reflect-metadata";
 import { DataSource } from "typeorm";
 import * as dotenv from 'dotenv';
 import path from 'path';
-
-// 1. Carregar variáveis de ambiente
+ 
 dotenv.config();
 
 // 2. Interface para tipagem das variáveis
@@ -15,7 +14,6 @@ interface DatabaseConfig {
   database: string;
 }
 
-// 3. Função de validação melhorada
 function getDatabaseConfig(): DatabaseConfig {
   const requiredVars = {
     DB_HOST: 'string',
@@ -45,7 +43,6 @@ function getDatabaseConfig(): DatabaseConfig {
   };
 }
 
-// 4. Configuração do DataSource
 export const AppDataSource = new DataSource({
   type: "postgres",
   ...getDatabaseConfig(),
@@ -56,7 +53,6 @@ export const AppDataSource = new DataSource({
   subscribers: [],
 });
 
-// 5. Inicialização com tratamento de erros
 AppDataSource.initialize()
   .then(() => {
     console.log("Data Source has been initialized!");
