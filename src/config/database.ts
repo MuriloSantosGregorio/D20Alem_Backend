@@ -5,7 +5,6 @@ import path from 'path';
  
 dotenv.config();
 
-// 2. Interface para tipagem das variáveis
 interface DatabaseConfig {
   host: string;
   port: number;
